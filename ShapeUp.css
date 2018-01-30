@@ -1,0 +1,56 @@
+.title {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2em;
+}
+
+.button-container {
+    display: table-caption;
+    
+}
+
+
+#information {
+    display: grid;
+    border: 2px solid black;
+    width: 13em;
+}
+
+.shape-display {
+    position: relative;
+    float: right;
+    background-color: rgb(74, 70, 70);
+    width: 600px;
+    height: 600px;
+}
+
+.shape-container-template {
+    display: none;
+}
+.triangle {
+    position: absolute;
+    width: 0;
+	height: 0;
+	border-left: 25px solid transparent;
+	border-right: 25px solid transparent;
+	border-bottom: 50px solid #555;
+}
+.circle {
+    position: absolute;
+    height: 150px;
+    width: 150px;
+    background-color: #555;
+    border-radius: 50%;
+}
+.square {
+    position: absolute;
+    height: 50px;
+    width: 50px;
+    background-color: #555;
+}
+.rectangle{
+    position: absolute;
+    height: 50px;
+    width: 100px;
+    background-color: #555;
+}

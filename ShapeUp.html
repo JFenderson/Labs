@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Shape Up or Shape Out</title>
+    <link rel="stylesheet" href="ShapeUp.css">
+</head>
+<body>
+    <div class="shapeContainer">
+    <div class = "title">Shape Up or Shape Out</div>
+    <div class = "button-container">
+    <!-- circle button/input -->
+        <input type="text" placeholder = "Radius" class="createShape" id="circleInput">
+        <button id="newCircle">create Circle</button>
+<!-- square button/input -->
+        <input type="text" placeholder="Side Length" class="createShape" id="square">
+        <button id = "square()" class="createSquare">create Square</button>
+<!-- triangle button/input -->
+        <input type="text" placeholder="Height" class="createShape" id="triangle">
+        <button onclick="randomXY()" id = "createTriangle">create Triangle</button>
+<!-- rectangle button/input -->
+        <input type="text" placeholder="width" class="createShape" id="recWidth">
+        <input type="text" placeholder="Height" class="createShape" id="recHeight">
+        <button id = "createRectangle"onclick="rectangle()">create Rectangle</button>
+    </div>
+<!-- Information of Shape bar ...needs click event-->
+    <div id="information">
+        <p>Shape Name:</p>
+        <span id="shapeName"></span>
+
+        <p>Width:</p>
+        <span id="shapeWidth"></span>
+
+        <p>Height:</p>
+        <span id="shapeHeight"></span>
+
+        <p>Radius:</p>
+        <span id="shapeRadius"></span>
+
+        <p>Area:</p>
+        <span id="shapeArea"></span>
+
+        <p>Perimeter:</p>
+        <span id="shapePerimeter"></span>
+    </div>
+    <!--  -->
+    <div id="shape-display">
+        
+        
+        </div>
+    </div>
+</div>
+    <script src="ShapeUp.js"></script>
+</body>
+</html>
+
+<!-- cloneNode..creaet the shapes in html then set to display none..when cloning simply do the clone node to grab the entire elements and place them in..to render them a different colors -->
+
+<!-- style.top find randow position for shapes. random.y & `${random.x}px`...where randomXY() needs to be the formula for the shapes position...top left -->
+
+
+<!-- for render()..set the 601 x:math.random() math.floor -->

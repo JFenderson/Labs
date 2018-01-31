@@ -18,7 +18,7 @@
 
 #shape-display {
     position: relative;
-    background-color: rgb(59, 184, 121);
+    background-color: rgb(59, 161, 184);
     width: 600px;
     height: 600px;
 }
@@ -33,9 +33,6 @@
     position: absolute;
     width: 0;
 	height: 0;
-	border-left: 25px solid transparent;
-	border-right: 25px solid transparent;
-	border-bottom: 50px solid rgb(209, 197, 24);
 }
 .circle {
     position: absolute;

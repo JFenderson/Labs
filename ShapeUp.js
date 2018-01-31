@@ -8,15 +8,21 @@ const rectangle = document.getElementsByName('rectangle');
 const recWidth = document.getElementById('recWidthInput');
 const recHeight = document.getElementById('recHeightInput');
 const recButton = document.getElementById('newRectangle');
-//const randNum = 100;
 const posShape = document.getElementById('shape-display');
-let makeCircle;
-let makeSquare;
-let makeRectangle;
-let makeTriangle;
 
+let shapeName = document.getElementById('shapeName');
+let shapeWidth = document.getElementById('shapeWidth');
+let shapeHeight = document.getElementById('shapeHeight');
+let shapeRadius = document.getElementById('shapeRadius');
+let shapeArea = document.getElementById('shapeArea');
+let shapePerimeter = document.getElementById('shapePerimeter');
 
-
+let targetName;
+let targetWidth;
+let targetHeight;
+let targetRadius;
+let targetArea;
+let targetPerimeter;
 
 document.addEventListener('DOMContentLoaded', function(){
     shapeContainer = document.getElementsByClassName('shapeContainer');
@@ -26,28 +32,28 @@ document.addEventListener('DOMContentLoaded', function(){
 function pickPos(){
     return Math.floor((Math.random()*300)+100) + "px";
 }
- 
-function change(){
-    var num = Math.floor(Math.random() * 100);
-      makeCircle.style.borderRadius= num +'px';
-  };
-
   
 
 class Shape {
-    constructor(color,type){
-        this.color = color;
-        this.type = type;
+    constructor(name){
+        this.name = name;
     }
-    render(){
-
+    decribe(){
+        shapeName.innerText = `${targetName}`;
+        shapeHeight.innerText = `${targetHeight}`;
+        shapeWidth.innerText = `${targetWidth}`;
+        shapeArea.innerText = `${targetArea}`;
+        shapePerimeter.innerText = `${targetPerimeter}`;
+        shapeRadius.innerText = `${targetRadius}`;
+        
     }
 }
 
 class CircleShape extends Shape{
     constructor (radius){
-        super("purple","circle");
+        super("circle");
         this.radius = radius;
+        // this.createCircle();
         
     }
     createCircle (){
@@ -58,29 +64,35 @@ class CircleShape extends Shape{
         makeCircle.style.position = ('absolute');
         makeCircle.style.left = pickPos();
         makeCircle.style.top = pickPos();
-        posShape.appendChild(makeCircle);
-        // for (var i = 0; i < randNum; i ++) {
-        //     $(posShape).append('<div class="circle" id="circle' + i + '"> </div>');
-        //   }    
-        
+        posShape.appendChild(makeCircle);  
+        makeCircle.addEventListener('dblclick', () => {
+            makeCircle.remove();
+        })
+        makeCircle.addEventListener('click',() =>{
+            this.getCircleStats();
+            this.decribe();
+        })
+    }
+    getCircleStats() {
+        targetName = this.name;
+        targetWidth = this.radius * 2;
+        targetHeight = this.radius * 2;
+        targetArea = 3.14*(this.radius ** 2);
+        targetPerimeter = 2 * 3.14 * this.radius;
+        targetRadius = this.radius;
         
     }
-    
 }
-// circle.addEventListener('input', function () {
-//     console.log('input changed to: ', circle.value);
-// });
+
 
 circleButton.addEventListener('click',function(){
     let newCircle = new CircleShape(circle);
     newCircle.createCircle();
 })
-// NEED TO REMOVE WHEN DBLCLICKED
-
 
 class SquareShape extends Shape {
     constructor(sideLength) {
-        super("red","square");
+        super("square");
         this.sideLength = sideLength;
         
     }
@@ -92,74 +104,90 @@ class SquareShape extends Shape {
         makeSquare.style.left = pickPos();
         makeSquare.style.top = pickPos();
         posShape.appendChild(makeSquare);
-        
+        makeSquare.addEventListener('dblclick', function () {
+            makeSquare.remove();
+        })
     }
+    getSquareStats() {
+        targetName = this.name;
+        targetWidth = this.sideLength;
+        targetHeight = this.sideLength;
+        targetArea = this.sideLength ** 2;
+        targetPerimeter = this.sideLength * 4;
+        targetRadius = this.radius;
+    }
+    
 }
 squareButton.addEventListener('click',function(){
     let newSquare = new SquareShape(square);
     newSquare.createSquare();
 })
 
-//triangle holds height(which is the same as width/base)
-// inp1 = parseInt(document.Triangle_Inputs.input1.value);
-// inp2 = parseInt(document.Triangle_Inputs.input2.value);
-// inp3 = parseInt(document.Triangle_Inputs.input3.value);
-// /* Side options */
-// sideA = (inp1 + inp2);
-// sideB = (inp1 + inp3);
-// sideC = (inp2 + inp3);
 
-// function getTriangleType(a,b,c) {
-//     return (a === b && b === c) && 'equilateral' ||
-//     (a === b || a === c || b === c) && 'isosceles' ||
-//     'scalene';
-//   }
-
-class Triangle extends Shape{
+class TriangleShape extends Shape{
     constructor(height) {
-    super("yellow","triangle");    
+    super("triangle");    
     this.height = height;
     
     }
-//     createTriangle (){
-//         const makeTriangle = document.createElement("div");
-//         makeTriangle.className = 'square';
-//         //makeTriangle.style.height = `${this.height.value}px`;
-//         //makeTriangle.style.width = `${this.sideLength.value}px`;
-//         makeTriangle.style.base
-//         makeTriangle.style.left = pickPos();
-//         makeTriangle.style.top = pickPos();
-//         posShape.appendChild(makeTriangle);
-        
-//     }
-    
+    createTriangle (){
+        const makeTriangle = document.createElement("div");
+        makeTriangle.className = 'triangle';
+        makeTriangle.style.borderBottom = `${this.height.value}px solid yellow`;
+        makeTriangle.style.borderLeft = `${this.height.value}px solid transparent`;
+        makeTriangle.style.left = pickPos();
+        makeTriangle.style.top = pickPos();
+        posShape.appendChild(makeTriangle);
+        makeTriangle.addEventListener('dblclick', function () {
+            makeTriangle.remove();
+        })
+    }
+    getTriangleStats() {
+        targetName = this.name;
+        targetWidth = this.height;
+        targetHeight = this.height;
+        targetArea = 1/2 *(this.height * 2);
+        targetPerimeter = 2 * this.height * Math.sqrt(2 * height * height);
+        targetRadius = this.radius;
+    }
  }
-// recButton.addEventListener('click',function(){
-//     let newRectangle = new SquareShape(square);
-//     newRec.createRectangle();
-// })
+triangleButton.addEventListener('click',function(){
+    let newTriangle = new TriangleShape(triangle);
+    newTriangle.createTriangle();
+})
 
 
 class RectangleShape extends Shape{
     constructor(width,height) {
-        super("green","rectangle");
-        this.width = recWidth.value;
-        this.height = recHeight.value;
+        super("rectangle");
+        this.width = width;
+        this.height = height;
         
     }
     createRectangle (){
         const makeRectangle = document.createElement("div");
         makeRectangle.className = 'rectangle';
-        makeRectangle.style.height = `${this.recHeight.value}px`;
-        makeRectangle.style.width = `${this.recWidth.value}px`;
+        makeRectangle.style.height = `${this.height.value}px`;
+        makeRectangle.style.width = `${this.width.value}px`;
         makeRectangle.style.left = pickPos();
         makeRectangle.style.top = pickPos();
-        posShape.appendChild(makeRectangle);
-        
+        posShape.appendChild(makeRectangle); 
+        makeRectangle.addEventListener('dblclick', function () {
+            makeRectangle.remove();
+        }) 
+    }
+    getRectangleStats() {
+        targetName = this.name;
+        targetWidth = this.width;
+        targetHeight = this.height;
+        targetArea = this.height * this.width;
+        targetPerimeter = (2 * this.height) + (2 * this.width);
+        targetRadius = this.radius;
     }
 }
+
 recButton.addEventListener('click',function(){
-    let newRectangle = new RectangleShape(this);
+    let newRectangle = new RectangleShape(recWidth.value,recHeight.value);
     newRectangle.createRectangle();
 })
 

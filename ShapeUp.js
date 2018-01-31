@@ -107,6 +107,10 @@ class SquareShape extends Shape {
         makeSquare.addEventListener('dblclick', function () {
             makeSquare.remove();
         })
+        makeSquare.addEventListener('click', () => {
+            this.getSquareStats();
+            this.decribe();
+        })
     }
     getSquareStats() {
         targetName = this.name;
@@ -141,13 +145,17 @@ class TriangleShape extends Shape{
         makeTriangle.addEventListener('dblclick', function () {
             makeTriangle.remove();
         })
+        makeTriangle.addEventListener('click', () => {
+            this.getTriangleStats();
+            this.decribe();
+        })
     }
     getTriangleStats() {
         targetName = this.name;
         targetWidth = this.height;
         targetHeight = this.height;
         targetArea = 1/2 *(this.height * 2);
-        targetPerimeter = 2 * this.height * Math.sqrt(2 * height * height);
+        targetPerimeter = 2 * this.height * Math.sqrt*(2 * height * height);
         targetRadius = this.radius;
     }
  }
@@ -167,14 +175,18 @@ class RectangleShape extends Shape{
     createRectangle (){
         const makeRectangle = document.createElement("div");
         makeRectangle.className = 'rectangle';
-        makeRectangle.style.height = `${this.height.value}px`;
-        makeRectangle.style.width = `${this.width.value}px`;
+        makeRectangle.style.height = `${this.recHeightInput}px`;
+        makeRectangle.style.width = `${this.recWidthInput}px`;
         makeRectangle.style.left = pickPos();
         makeRectangle.style.top = pickPos();
         posShape.appendChild(makeRectangle); 
         makeRectangle.addEventListener('dblclick', function () {
             makeRectangle.remove();
-        }) 
+        })
+        makeRectangle.addEventListener('click', () => {
+            this.getRectangleStats();
+            this.decribe();
+        })
     }
     getRectangleStats() {
         targetName = this.name;
@@ -187,64 +199,6 @@ class RectangleShape extends Shape{
 }
 
 recButton.addEventListener('click',function(){
-    let newRectangle = new RectangleShape(recWidth.value,recHeight.value);
+    let newRectangle = new RectangleShape(recWidthInput.value,recHeightInput.value);
     newRectangle.createRectangle();
 })
-
-
- 
-
-
- 
-
-
-
-
-// function new circle(){
-
-// }
-
-// function new square(){
-
-// }
-
-// function new triangle(){
-
-// }
-// function new recangle(){
-
-// }
-
-
-// $(document).ready(function() {
-//     const SQ_NUM = 100;
-//     for (var i = 0; i < SQ_NUM; i ++) {
-//       $('#canvas').append('<div class="square" id="square' + i + '"> </div>');
-//     }    
-//     function get_random_color() {
-//       function c() {
-//         return Math.floor(Math.random()*256).toString(16);
-//       }
-//       return "#"+c()+c()+c();
-//     }      
-//     setInterval(function() {
-//       for (var i = 0; i < SQ_NUM; i ++) {
-//         var obj = $('#square' + i);
-//         obj.css("outline", "1px solid " + get_random_color());
-//         obj.css("background", get_random_color());
-//         var width = $(document).width();
-//         var height = $(document).height();
-//         var left = Math.floor(Math.random() * width); 
-//         var top = Math.floor(Math.random() * height); 
-//         obj.css("left", left);
-//         obj.css("top", top);  
-//         var min = Math.min(
-//               Math.floor(Math.random() * (width - left)), 
-//               Math.floor(Math.random() * (height - top))
-//         );        
-//         obj.css("width", min);
-//         obj.css("height", min);
-//       }
-//     }, 100);
-//   });
-

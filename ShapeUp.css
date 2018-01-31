@@ -16,12 +16,14 @@
     width: 13em;
 }
 
-.shape-display {
+#shape-display {
     position: relative;
-    float: right;
-    background-color: rgb(74, 70, 70);
+    background-color: rgb(59, 184, 121);
     width: 600px;
     height: 600px;
+}
+.shapeContainer{
+    
 }
 
 .shape-container-template {
@@ -33,24 +35,24 @@
 	height: 0;
 	border-left: 25px solid transparent;
 	border-right: 25px solid transparent;
-	border-bottom: 50px solid #555;
+	border-bottom: 50px solid rgb(209, 197, 24);
 }
 .circle {
     position: absolute;
     height: 150px;
     width: 150px;
-    background-color: #555;
+    background-color: rgb(93, 38, 165);
     border-radius: 50%;
 }
 .square {
     position: absolute;
     height: 50px;
     width: 50px;
-    background-color: #555;
+    background-color: rgb(199, 12, 12);
 }
 .rectangle{
     position: absolute;
     height: 50px;
     width: 100px;
-    background-color: #555;
+    background-color: rgb(31, 207, 40);
 }
